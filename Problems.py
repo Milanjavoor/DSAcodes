@@ -33,4 +33,18 @@ class Solution(object):
         return maxk
         
         return max(maxk,k)
-        
+ # problem 3 . Maximum Subarray
+Given an integer array nums, find the subarray with the largest sum, and return its sum.       
+class Solution(object):
+    def maxSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        maxi=float('-inf')
+        for i in range(0,len(nums)):
+            total=0
+            for j in range(i,len(nums)):
+                total=total+nums[j]
+                maxi= max(total,maxi)
+        return maxi
