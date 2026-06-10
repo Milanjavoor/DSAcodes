@@ -73,3 +73,20 @@ class Solution(object):
             if max<res:
                 max=res
         return max
+        121. Best Time to Buy and Sell Stock
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        n=len(prices)
+        maxprof=0
+        minval=float("inf")
+        for i in range(0,n):
+            if minval<prices[i]:
+                prof=prices[i]-minval
+                maxprof=max(maxprof,prof)
+
+            if prices[i]<minval:
+                minval=prices[i]
+        return maxprof
