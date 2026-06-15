@@ -120,3 +120,29 @@ class Solution(object):
                     l+=1
                  
         return result
+
+
+#2149. Rearrange Array Elements by Sign
+class Solution(object):
+    def rearrangeArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        n=len(nums)
+        pos=[]
+        neg=[]
+        for i in range(n):
+            if nums[i]<0:
+                neg.append(nums[i])
+            else:
+                pos.append(nums[i])
+        for i in range(0,n):
+            if i==1:
+                nums[i]=(neg[0])
+            else:
+                if i%2==0:
+                    nums[i]=pos[i//2]
+                else:
+                    nums[i]=neg[i//2]
+        return nums
