@@ -41,13 +41,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        maxi=float('-inf')
-        for i in range(0,len(nums)):
-            total=0
-            for j in range(i,len(nums)):
-                total=total+nums[j]
-                maxi= max(total,maxi)
-        return maxi
+        
  n=len(nums)
         total=0
         maxi=float("-inf")
