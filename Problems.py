@@ -158,3 +158,34 @@ class Solution(object):
                 ans[neg]=i
                 neg+=2
         return ans
+class Solution(object):
+    def spiralOrder(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: List[int]
+        """
+        n=len(matrix)
+        m=len(matrix[0])
+        top=0
+        bot=n-1
+        right=m-1
+        left=0
+        result=[]
+        while top<=bot and left<=right:
+            for i in range(left,right+1):
+                result.append(matrix[top][i])
+            top+=1
+            for i in range(top,bot+1):
+                result.append(matrix[i][right])
+            right-=1
+            if top<=bot:
+                for i in range(right,left-1,-1):
+                    result.append(matrix[bot][i])
+                bot-=1
+            if left<=right:
+                for i in range(bot,top-1,-1):
+                    result.append(matrix[i][left])
+                left+=1
+        return result
+
+
