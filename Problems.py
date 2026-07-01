@@ -191,4 +191,32 @@ class Solution(object):
                 left+=1
         return result
 
+18. 4Sum
 
+Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
+0 <= a, b, c, d < n
+a, b, c, and d are distinct.
+nums[a] + nums[b] + nums[c] + nums[d] == targe
+class Solution(object):
+    def fourSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        nums.sort()
+        result=[]
+        for i in range(0,len(nums)):
+            for j in range(i+1,len(nums)):
+                for k in range(j+1,len(nums)):
+                    for m in range(k+1,len(nums)):
+                        s=nums[i]+nums[j]+nums[k]+nums[m]
+                        o=[nums[i],nums[j],nums[k],nums[m]]
+                        if s==target:
+                            if o not in result:
+                                result.append(o)
+                            else:
+                                pass
+                        else:
+                            pass
+        return result
