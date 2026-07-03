@@ -220,3 +220,24 @@ class Solution(object):
                         else:
                             pass
         return result
+    def fourSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        nums.sort()
+        result=[]
+        for i in range(0,len(nums)):
+            for j in range(i+1,len(nums)):
+                myset=set()
+                for l in range(j+1,len(nums)):
+                    k=target-(nums[i]+nums[j]+nums[l])
+                    if k in myset:
+                        new=[nums[i],nums[j],nums[l],k]
+                        new.sort()
+                        if new not in result:
+                            result.append(new)
+                    myset.add(nums[l])
+        return result
+       
