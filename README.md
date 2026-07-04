@@ -120,6 +120,68 @@ def maxProfit(self, prices):
 - Platform: LeetCode
 
 ---
+# 4Sum - LeetCode (Python)
 
-*Started: [Add start date]*  
-*Location: Hubballi, Karnataka, India*
+## Problem Statement
+
+Given an array `nums` of `n` integers, return all unique quadruplets `[nums[a], nums[b], nums[c], nums[d]]` such that:
+
+- `0 <= a, b, c, d < n`
+- `a`, `b`, `c`, and `d` are distinct.
+- `nums[a] + nums[b] + nums[c] + nums[d] == target`
+
+The solution should not contain duplicate quadruplets.
+
+---
+
+## Approach
+
+This solution uses:
+
+- Sorting the input array.
+- Two nested loops to fix the first two elements.
+- A two-pointer technique to efficiently find the remaining two elements.
+- Duplicate skipping to ensure only unique quadruplets are returned.
+
+This approach significantly reduces unnecessary computations compared to checking every possible combination.
+
+---
+
+## Algorithm
+
+1. Sort the array.
+2. Iterate through the array with the first pointer.
+3. Use a second loop for the second pointer.
+4. Initialize two pointers (`left` and `right`) for the remaining elements.
+5. Compare the current sum with the target:
+   - If equal, store the quadruplet.
+   - If smaller, move the left pointer.
+   - If larger, move the right pointer.
+6. Skip duplicate values at every stage.
+7. Return the list of unique quadruplets.
+
+---
+
+## Time Complexity
+
+- **Sorting:** `O(n log n)`
+- **Nested loops + Two pointers:** `O(n³)`
+
+**Overall:** `O(n³)`
+
+---
+
+## Space Complexity
+
+- **Auxiliary Space:** `O(1)` (excluding the output list)
+- **Output Space:** Depends on the number of valid quadruplets.
+
+---
+
+## Features
+
+- Efficient `O(n³)` solution.
+- Avoids duplicate quadruplets.
+- Uses the two-pointer technique after sorting.
+- Clean and optimized Python implementation.
+
