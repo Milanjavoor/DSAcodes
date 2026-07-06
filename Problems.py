@@ -244,17 +244,18 @@ class Solution(object):
     def fourSum(self, nums, target):
         nums.sort()
         result=[]
-        for i in range(0,len(nums)):
+        for i in range(0,len(nums)-3):
             if i>0 and nums[i]==nums[i-1]:
                 continue
-            for j in range(i+1,len(nums)):
+            for j in range(i+1,len(nums)-2):
                 if j>i+1 and nums[j]==nums[j-1]:
                     continue
                 k=j+1
-                l=len(nums)-1
+                l=len(nums)-1                                                                                                                                                                                                                  
+                remain = target-(nums[i]+nums[j])
                 while k<l:
-                    sum=nums[i]+nums[j]+nums[k]+nums[l]
-                    if sum==target:
+                    sum=nums[k]+nums[l]
+                    if sum==remain:
                         new=[nums[i],nums[j],nums[k],nums[l]]
                         result.append(new)
                         k+=1
@@ -263,7 +264,7 @@ class Solution(object):
                             k+=1
                         while l>k and nums[l]==nums[l+1]:
                             l-=1
-                    elif sum<target:
+                    elif sum<remain:
                         k+=1
                     else:
                         l-=1
