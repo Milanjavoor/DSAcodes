@@ -1,187 +1,185 @@
-# Daily DSA Practice
+Daily DSA Practice
 
-A collection of Data Structures and Algorithms problems I'm solving daily to strengthen my coding skills.
+A collection of Data Structures and Algorithms problems I'm solving daily to strengthen my problem-solving skills and prepare for coding interviews. The repository focuses on mastering common array techniques, two-pointer methods, greedy algorithms, and optimized searching strategies.
 
-## Problems Solved
+Problems Solved
+1. Move Zeroes
 
-### 1. Move Zeros
-**Problem:** Move all zeros in an array to the end while maintaining the relative order of non-zero elements.
+Problem: Move all zeros in an array to the end while maintaining the relative order of non-zero elements.
 
-**Approach:** Two-pointer technique
-- Use pointer `i` to track position for next non-zero element
-- Iterate with pointer `j` to find non-zero elements
-- Place non-zero elements at position `i`, then fill remaining positions with zeros
+Approach: Two Pointer Technique
+Maintain pointer i for the next position of a non-zero element.
+Traverse the array using pointer j.
+Place every non-zero element at index i.
+Fill the remaining positions with zeros.
 
-**Time Complexity:** O(n)  
-**Space Complexity:** O(1)
+Time Complexity: O(n)
 
-```python
-def moveZeroes(self, nums):
-    n = len(nums)
-    i = 0
-    for j in range(n):
-        if nums[j] != 0:
-            nums[i] = nums[j]
-            i += 1
-    for m in range(i, n):
-        nums[m] = 0
-```
+Space Complexity: O(1)
 
----
+2. Maximum Consecutive Ones
 
-### 2. Maximum Consecutive Ones
-**Problem:** Find the maximum number of consecutive 1s in an array.
+Problem: Find the maximum number of consecutive 1s in a binary array.
 
-**Approach:** Linear traversal with counter
-- Maintain a counter `k` for current consecutive ones
-- Reset counter when encountering 0
-- Track maximum count in `maxk`
+Approach: Linear Traversal
+Maintain a counter for current consecutive ones.
+Reset the counter whenever 0 is encountered.
+Track the maximum streak.
 
-**Time Complexity:** O(n)  
-**Space Complexity:** O(1)
+Time Complexity: O(n)
 
-```python
-def findMaxConsecutiveOnes(self, nums):
-    k = 0
-    maxk = 0
-    for i in nums:
-        if i:
-            k += 1
-        else:
-            if k > maxk:
-                maxk = k
-            k = 0
-    if k > maxk:
-        maxk = k
-    return maxk
-```
+Space Complexity: O(1)
 
----
+3. Maximum Subarray
 
-### 3. Maximum Subarray
-**Problem:** Find the subarray with the largest sum and return its sum.
+Problem: Find the contiguous subarray having the largest sum.
 
-**Approach:** Kadane's Algorithm (Optimized)
-- Maintain running sum `total`
-- Reset to 0 when sum becomes negative
-- Track maximum sum encountered
+Approach: Kadane's Algorithm
+Maintain a running sum.
+Reset the running sum whenever it becomes negative.
+Track the maximum sum throughout the traversal.
 
-**Time Complexity:** O(n)  
-**Space Complexity:** O(1)
+Time Complexity: O(n)
 
-```python
-def maxSubArray(self, nums):
-    maxi = float('-inf')
-    total = 0
-    for i in range(len(nums)):
-        total += nums[i]
-        maxi = max(total, maxi)
-        if total < 0:
-            total = 0
-    return maxi
-```
+Space Complexity: O(1)
 
----
+4. Best Time to Buy and Sell Stock
 
-### 4. Best Time to Buy and Sell Stock
-**Problem:** Find maximum profit from buying and selling stock once.
+Problem: Find the maximum profit that can be achieved from buying and selling a stock once.
 
-**Approach:** Single pass with min tracking
-- Track minimum price seen so far (`minval`)
-- Calculate profit at each price point
-- Update maximum profit (`maxprof`)
+Approach: Greedy
+Keep track of the minimum stock price seen so far.
+Compute the profit for each day.
+Update the maximum profit whenever a larger profit is found.
 
-**Time Complexity:** O(n)  
-**Space Complexity:** O(1)
+Time Complexity: O(n)
 
-```python
-def maxProfit(self, prices):
-    n = len(prices)
-    maxprof = 0
-    minval = float("inf")
-    for i in range(n):
-        if minval < prices[i]:
-            prof = prices[i] - minval
-            maxprof = max(maxprof, prof)
-        if prices[i] < minval:
-            minval = prices[i]
-    return maxprof
+Space Complexity: O(1)
 
-## Learning Goals
+5. 3Sum
 
-- Master array manipulation techniques
-- Understand two-pointer and sliding window patterns
-- Learn Kadane's Algorithm for subarray problems
-- Build consistent daily coding practice
+Problem: Find all unique triplets whose sum equals zero.
 
-## Technologies Used
+Approach: Sorting + Two Pointers
+Sort the array.
+Fix one element.
+Use two pointers to search for the remaining two numbers.
+Skip duplicate values to avoid repeated triplets.
 
-- Language: Python
-- Platform: LeetCode
+Time Complexity: O(n²)
 
----
-# 4Sum - LeetCode (Python)
+Space Complexity: O(1) (excluding output)
 
-## Problem Statement
+6. Rearrange Array Elements by Sign
 
-Given an array `nums` of `n` integers, return all unique quadruplets `[nums[a], nums[b], nums[c], nums[d]]` such that:
+Problem: Rearrange an array so that positive and negative numbers alternate while maintaining their relative order.
 
-- `0 <= a, b, c, d < n`
-- `a`, `b`, `c`, and `d` are distinct.
-- `nums[a] + nums[b] + nums[c] + nums[d] == target`
+Approach 1: Extra Positive & Negative Arrays
+Store positive and negative numbers separately.
+Place them alternately into the original array.
 
-The solution should not contain duplicate quadruplets.
+Time Complexity: O(n)
 
----
+Space Complexity: O(n)
 
-## Approach
+Approach 2: Optimized Auxiliary Array
+Create an answer array.
+Maintain two indices:
+pos = 0
+neg = 1
+Place positive numbers at even indices and negative numbers at odd indices.
 
-This solution uses:
+Time Complexity: O(n)
 
-- Sorting the input array.
-- Two nested loops to fix the first two elements.
-- A two-pointer technique to efficiently find the remaining two elements.
-- Duplicate skipping to ensure only unique quadruplets are returned.
+Space Complexity: O(n)
 
-This approach significantly reduces unnecessary computations compared to checking every possible combination.
+7. Spiral Matrix
 
----
+Problem: Return all elements of a matrix in spiral order.
 
-## Algorithm
+Approach: Boundary Traversal
 
-1. Sort the array.
-2. Iterate through the array with the first pointer.
-3. Use a second loop for the second pointer.
-4. Initialize two pointers (`left` and `right`) for the remaining elements.
-5. Compare the current sum with the target:
-   - If equal, store the quadruplet.
-   - If smaller, move the left pointer.
-   - If larger, move the right pointer.
-6. Skip duplicate values at every stage.
-7. Return the list of unique quadruplets.
+Maintain four boundaries:
 
----
+Top
+Bottom
+Left
+Right
 
-## Time Complexity
+Traverse each boundary one by one while shrinking the boundaries after every traversal.
 
-- **Sorting:** `O(n log n)`
-- **Nested loops + Two pointers:** `O(n³)`
+Time Complexity: O(m × n)
 
-**Overall:** `O(n³)`
+Space Complexity: O(1) (excluding output)
 
----
+8. 4Sum
 
-## Space Complexity
+Problem: Find all unique quadruplets whose sum equals the target.
 
-- **Auxiliary Space:** `O(1)` (excluding the output list)
-- **Output Space:** Depends on the number of valid quadruplets.
+Approaches Implemented
+Brute Force
+Check every possible quadruplet.
+Store unique answers.
 
----
+Time Complexity: O(n⁴)
 
-## Features
+Space Complexity: O(1)
 
-- Efficient `O(n³)` solution.
-- Avoids duplicate quadruplets.
-- Uses the two-pointer technique after sorting.
-- Clean and optimized Python implementation.
+Better Approach (Hash Set)
+Fix two numbers.
+Use a hash set to find the remaining pair.
+Remove duplicates before storing.
 
+Time Complexity: O(n³)
+
+Space Complexity: O(n)
+
+Optimal Approach (Sorting + Two Pointers)
+Sort the array.
+Fix the first two numbers.
+Use two pointers to find the remaining pair.
+Skip duplicate values for uniqueness.
+
+Time Complexity: O(n³)
+
+Space Complexity: O(1) (excluding output)
+
+Patterns Covered
+Two Pointer Technique
+Greedy Algorithms
+Kadane's Algorithm
+Array Traversal
+Sorting
+Hashing
+Two Pointer after Sorting
+Boundary Traversal
+Duplicate Elimination
+In-place Array Manipulation
+Learning Goals
+Strengthen array manipulation techniques.
+Master the two-pointer pattern.
+Learn greedy optimization strategies.
+Understand Kadane's Algorithm.
+Practice hash-based searching.
+Solve interview-standard problems with multiple approaches.
+Improve time and space complexity optimization skills.
+Technologies Used
+Language: Python
+Platform: LeetCode
+Concepts: Arrays, Greedy, Hashing, Sorting, Two Pointers, Dynamic Programming Basics
+Complexity Summary
+Problem	Best Time	Space
+Move Zeroes	O(n)	O(1)
+Maximum Consecutive Ones	O(n)	O(1)
+Maximum Subarray	O(n)	O(1)
+Best Time to Buy & Sell Stock	O(n)	O(1)
+3Sum	O(n²)	O(1)
+Rearrange Array by Sign	O(n)	O(n)
+Spiral Matrix	O(m × n)	O(1)
+4Sum	O(n³)	O(1)
+Repository Highlights
+✔️ Multiple approaches for the same problem (Brute Force → Better → Optimal).
+✔️ Clean and beginner-friendly Python implementations.
+✔️ Covers several popular interview patterns.
+✔️ Focuses on writing optimized solutions after understanding brute-force approaches.
+✔️ Designed as a daily DSA practice repository for continuous improvement.
