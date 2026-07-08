@@ -269,3 +269,29 @@ class Solution(object):
                     else:
                         l-=1
         return result
+525. Contiguous Array
+
+Given a binary array nums, return the maximum length of a contiguous subarray with an equal number of 0 and 1
+class Solution(object):
+    def findMaxLength(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        n=len(nums)
+        one,zero=0,0
+        res=0
+        map={}
+        for i,j in enumerate(nums):
+            if j==0:
+                zero+=1
+            else:
+                one+=1
+            if one-zero not in map:
+                map[one-zero]=i
+            if one==zero:
+                res=one+zero
+            else:
+                index=map[one-zero]
+                res=max(res,i-index)
+        return res
