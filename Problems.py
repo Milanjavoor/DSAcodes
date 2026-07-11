@@ -295,3 +295,23 @@ class Solution(object):
                 index=map[one-zero]
                 res=max(res,i-index)
         return res
+26. Remove Duplicates from Sorted Array
+class Solution(object):
+    def removeDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        n=len(nums)
+        
+        l=1
+        for i in range(1,n):
+            if nums[i]==nums[i-1]:
+                pass
+                
+            else:
+                nums[l]=nums[i]
+                
+                l+=1
+            
+        return l
