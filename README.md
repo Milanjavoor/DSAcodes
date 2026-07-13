@@ -183,3 +183,14 @@ Repository Highlights
 ✔️ Covers several popular interview patterns.
 ✔️ Focuses on writing optimized solutions after understanding brute-force approaches.
 ✔️ Designed as a daily DSA practice repository for continuous improvement.
+
+
+Remove Duplicates from Sorted Array
+A Python solution to remove duplicate elements from a sorted integer array in-place. The algorithm uses a two-pointer approach to modify the array efficiently without allocating extra space for another array.
+
+🚀 How It Works
+The function uses two pointers to process the array:
+
+i (the scanner): Iterates through the array from left to right.
+
+l (the writer): Tracks the index where the next unique element should be placed
