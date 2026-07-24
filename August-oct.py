@@ -14,3 +14,22 @@ class Solution:
                 if p_copy not in final:
                     final.append(p_copy)
         return final
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        final=[]
+        new=[]
+        visited={num:False for num in nums}
+        def solve():
+            if len(nums)==len(new):
+                final.append(new[:])
+                return
+            for num in nums:
+                if visited[num]==True:
+                    continue
+                new.append(num)
+                visited[num]=True
+                solve()
+                new.pop()
+                visited[num]=False
+        solve()
+        return final
