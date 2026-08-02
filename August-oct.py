@@ -90,3 +90,20 @@ class Solution:
                 total=0
                 res=j+1
         return res
+136. Single Number
+
+Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+
+You must implement a solution with a linear runtime complexity and use only constant extra space
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        nums.sort()
+        for i in range(len(nums)):
+            if len(nums)==1:
+                return nums[0]
+            if i==len(nums)-1:
+                return nums[i]
+            if nums[i-1]==nums[i] or nums[i+1]==nums[i]:
+                pass
+            else:
+                return nums[i]
