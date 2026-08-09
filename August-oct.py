@@ -14,7 +14,7 @@ class Solution:
                 if p_copy not in final:
                     final.append(p_copy)
         return final
-class Solution:
+class Sol:
     def permute(self, nums: List[int]) -> List[List[int]]:
         final=[]
         new=[]
