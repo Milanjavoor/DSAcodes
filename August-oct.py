@@ -107,3 +107,18 @@ class Solution:
                 pass
             else:
                 return nums[i]
+
+27. Remove Element
+
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        n=len(nums)
+        m=0
+        for i in range(0,n):
+            if nums[i]==val:
+                nums[i]=0
+                m+=1
+            else:
+                pass
+        nums.sort(reverse=True)
+        return n-m
