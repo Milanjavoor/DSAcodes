@@ -27,6 +27,21 @@ class Sol:
                 if visited[num]==True:
                     continue
                 new.append(num)
+    class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+
+        n=len(nums)
+        k=0
+        while k<n:
+
+            if nums[k]==val:
+                for j in range(k,n-1):
+                    nums[j]=nums[j+1]
+                n-=1
+                k=k
+            else:
+                k+=1
+        return n
                 visited[num]=True
                 solve()
                 new.pop()
