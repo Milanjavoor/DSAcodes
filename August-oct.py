@@ -137,3 +137,23 @@ class Solution:
                 pass
         nums.sort(reverse=True)
         return n-m
+162. Find Peak Element
+A peak element is an element that is strictly greater than its neighbors.
+Given a 0-indexed integer array nums, find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks.
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        n=len(nums)
+        for i in range(0,n):
+            if n==1:
+                return 0
+            if n==2:
+                if nums[0]>nums[1]:
+                    return 0
+                else:
+                    return 1
+            if i==n-1:
+                if nums[i]>nums[i-1]:
+                    return i
+                break
+            if nums[i]>nums[i-1] and nums[i]>nums[i+1]:
+                return i
