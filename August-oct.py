@@ -168,3 +168,19 @@ class Solution:
             else:
                 hi=mid
         return lo
+344. Reverse String
+Write a function that reverses a string. The input string is given as an array of characters s.
+
+You must do this by modifying the input array in-place with O(1) extra memory.
+
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        l=0
+        n=len(s)
+        while n>l:
+            s[l],s[n-1]=s[n-1],s[l]
+            l+=1
+            n-=1
